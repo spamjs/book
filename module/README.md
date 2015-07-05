@@ -27,7 +27,7 @@ _define_("myproject.app",function(app){
 
 });
 ```
-To extend form parent module
+To extend from parent module
 
 ```javascript
 
