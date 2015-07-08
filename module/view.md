@@ -59,7 +59,7 @@ self.html("<div>Hello</div>");
 ```
 
 ####self.add
-removes child module from memory and DOM
+adds child module to current module
 ```javascript
 var CHILD_MODULE = _module_("child.module");
 
@@ -101,6 +101,25 @@ jQuery DOM reference object for current view module instance
 self.$$.find(".myname").text("LNT");
 
 ```
+
+### Prototype Properties
+
+####events
+Is used to capture DOM events withing Module instance
+```javascript
+
+_instance_.events = {
+    "click .mydiv .mybutton" : "function_name1",
+    "click .my2div .my2button" : "function_name3"
+};
+
+_instance_.function_name1 = function(e,target){
+    //e is dom event
+    //target is dom element
+}
+```
+_function_name1_ and _function_name3_ are instance level methods
+
 
 
 
