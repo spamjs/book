@@ -16,3 +16,14 @@ To check the type of javascript Object.
     window.is("Array", myObj);
     window.is("String", myObj);
 ```
+##is.Array(obj)
+##is.Number(obj)
+##is.Function(obj)
+##is.Null(obj)
+##is.Undefined(obj)
+##is.Value(obj)
+ Returns TRUE if obj is neither _null_ nor _undefined_
+##is.Empty(obj)
+ Returns TRUE if obj is _null_, _undefined_,_false_,_0_,EMPTY_ARRAY, EMPTY_OBJECT or EMPTY_STRING
+
+
