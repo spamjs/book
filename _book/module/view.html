@@ -4,22 +4,22 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Introduction | SPAMJS</title>
+        <title>View Module | SPAMJS</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Single Page Application Module JavaScript Framwork.">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
         <meta name="HandheldFriendly" content="true"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
     
     
     
-    <link rel="next" href="./chapter1.html" />
     
+    <link rel="prev" href="../module/module_methods.html" />
     
 
         
@@ -27,11 +27,11 @@
     <body>
         
         
-<link rel="stylesheet" href="gitbook/style.css">
+<link rel="stylesheet" href="../gitbook/style.css">
 
 
         
-    <div class="book"  data-level="0" data-basepath="." data-revision="1436507840093">
+    <div class="book"  data-level="2.3" data-basepath=".." data-revision="1436507840093">
     
 
 <div class="book-summary">
@@ -49,10 +49,10 @@
         
     
         
-        <li class="chapter active" data-level="0" data-path="index.html">
+        <li class="chapter " data-level="0" data-path="index.html">
             
                 
-                    <a href="./index.html">
+                    <a href="../index.html">
                         <i class="fa fa-check"></i>
                         
                          Introduction
@@ -66,7 +66,7 @@
         <li class="chapter " data-level="1" data-path="chapter1.html">
             
                 
-                    <a href="./chapter1.html">
+                    <a href="../chapter1.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
@@ -82,7 +82,7 @@
         <li class="chapter " data-level="2" data-path="module/README.html">
             
                 
-                    <a href="./module/README.html">
+                    <a href="../module/README.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.</b>
@@ -99,7 +99,7 @@
         <li class="chapter " data-level="2.1" data-path="module/module_life_cycle.html">
             
                 
-                    <a href="./module/module_life_cycle.html">
+                    <a href="../module/module_life_cycle.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
@@ -115,7 +115,7 @@
         <li class="chapter " data-level="2.2" data-path="module/module_methods.html">
             
                 
-                    <a href="./module/module_methods.html">
+                    <a href="../module/module_methods.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.2.</b>
@@ -128,10 +128,10 @@
         </li>
     
         
-        <li class="chapter " data-level="2.3" data-path="module/view.html">
+        <li class="chapter active" data-level="2.3" data-path="module/view.html">
             
                 
-                    <a href="./module/view.html">
+                    <a href="../module/view.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.3.</b>
@@ -229,7 +229,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="./" >SPAMJS</a>
+        <a href="../" >SPAMJS</a>
     </h1>
 </div>
 
@@ -237,10 +237,100 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_4">
+                    <section class="normal" id="section-gitbook_9">
                     
-                        <h1 id="spamjs">SPAMJS</h1>
-<p>Single Page Application Module JavaScript Framwork.</p>
+                        <h1 id="view-module">View Module</h1>
+<p>Each module which has its own independant DOM presence. They are called view.</p>
+<p>_view_ is actually shortcut for extending <em>view</em> (or <em>spamjs.module</em>) module. Its each instance has its own life cycle and predefined methods.</p>
+<h3 id="life-cycle">Life Cycle</h3>
+<pre><code class="lang-javascript">_view_(<span class="hljs-string">"mychatwindow"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mychatwindow,_mychatwindow_)</span></span>{
+
+    _mychatwindow_._init_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(appConfig)</span></span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"View is Intialized"</span>);
+    };
+
+    _mychatwindow_._remove_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"View is being removed from DOM"</span>);
+    };
+
+});
+</code></pre>
+<h3 id="methods">Methods</h3>
+<h4 id="selfview">self.view</h4>
+<p>Sets the view for module instance</p>
+<pre><code class="lang-javascript">self.view({ <span class="hljs-comment">//Same as self.load</span>
+    src : <span class="hljs-string">"relative_path_to_my_html"</span>,
+    data : <span class="hljs-string">"relative_path_to_my_json"</span> | {PlainObject} | Promise(),
+    html : <span class="hljs-string">"&lt;div&gt;&lt;/div&gt;"</span> <span class="hljs-comment">//Optional if src is not given</span>
+});
+
+<span class="hljs-comment">//OR</span>
+self.view(
+    <span class="hljs-string">"relative_path_to_my_html"</span>,
+    <span class="hljs-string">"relative_path_to_my_json"</span> | {PlainObject} | Promise()
+});
+</code></pre>
+<h4 id="selfdata">self.data</h4>
+<p>set/get data for module</p>
+<pre><code class="lang-javascript">self.data({
+    name : <span class="hljs-string">"Lalit Tanwar"</span>
+});
+</code></pre>
+<h4 id="selfrender">self.render</h4>
+<p>set/get data for module and re-render html again.</p>
+<pre><code class="lang-javascript">self.render({
+    name : <span class="hljs-string">"Lalit Tanwar"</span>
+});
+</code></pre>
+<h4 id="selfhtml">self.html</h4>
+<p>set/get html for module and re-render html again.</p>
+<pre><code class="lang-javascript">self.html(<span class="hljs-string">"&lt;div&gt;Hello&lt;/div&gt;"</span>);
+</code></pre>
+<h4 id="selfadd">self.add</h4>
+<p>adds child module to current module</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> CHILD_MODULE = _module_(<span class="hljs-string">"child.module"</span>);
+
+self.add(CHILD_MODULE.instance({
+    id : <span class="hljs-string">"myID"</span>
+}));
+</code></pre>
+<h4 id="selfaddto">self.addTo</h4>
+<p>Ideally used to initialize top-most view which has not parent, and in absence of param will use body as container.</p>
+<pre><code class="lang-javascript">MODULE.instance().addTo(jQuery(<span class="hljs-string">"#mydiv"</span>));
+</code></pre>
+<h4 id="selfremove">self.remove</h4>
+<p>removes child module from memory and DOM</p>
+<pre><code class="lang-javascript">self.remove(<span class="hljs-string">"module_id"</span>);
+</code></pre>
+<h4 id="selfmodel">self.model</h4>
+<p>Set/gets 2Way model linked with Current View module instance.</p>
+<pre><code class="lang-javascript">self.model({ score : <span class="hljs-number">50</span> });
+
+<span class="hljs-keyword">var</span> score  = self.model().score;
+<span class="hljs-comment">//score is 50</span>
+
+self.model().score = <span class="hljs-number">40</span>;
+</code></pre>
+<h3 id="properties">Properties</h3>
+<h5 id="self">self.$$</h5>
+<p>jQuery DOM reference object for current view module instance</p>
+<pre><code class="lang-javascript">self.$$.find(<span class="hljs-string">".myname"</span>).text(<span class="hljs-string">"LNT"</span>);
+</code></pre>
+<h3 id="prototype-properties">Prototype Properties</h3>
+<h4 id="events">events</h4>
+<p>Is used to capture DOM events withing Module instance</p>
+<pre><code class="lang-javascript">
+_instance_.events = {
+    <span class="hljs-string">"click .mydiv .mybutton"</span> : <span class="hljs-string">"function_name1"</span>,
+    <span class="hljs-string">"click .my2div .my2button"</span> : <span class="hljs-string">"function_name3"</span>
+};
+
+_instance_.function_name1 = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e,target)</span></span>{
+    <span class="hljs-comment">//e is dom event</span>
+    <span class="hljs-comment">//target is dom element</span>
+}
+</code></pre>
+<p><em>function_name1</em> and <em>function_name3</em> are instance level methods</p>
 
                     
                     </section>
@@ -251,21 +341,21 @@
         </div>
 
         
+        <a href="../module/module_methods.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Module Methods"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./chapter1.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Scalable Application"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
-<script src="gitbook/app.js"></script>
+<script src="../gitbook/app.js"></script>
 
     
     <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
     
-    <script src="gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
     
 
 <script>

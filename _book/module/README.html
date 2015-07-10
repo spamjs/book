@@ -4,22 +4,24 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Introduction | SPAMJS</title>
+        <title>Module | SPAMJS</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Single Page Application Module JavaScript Framwork.">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
         <meta name="HandheldFriendly" content="true"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
     
     
     
-    <link rel="next" href="./chapter1.html" />
+    <link rel="next" href="../module/module_life_cycle.html" />
     
+    
+    <link rel="prev" href="../chapter1.html" />
     
 
         
@@ -27,11 +29,11 @@
     <body>
         
         
-<link rel="stylesheet" href="gitbook/style.css">
+<link rel="stylesheet" href="../gitbook/style.css">
 
 
         
-    <div class="book"  data-level="0" data-basepath="." data-revision="1436507840093">
+    <div class="book"  data-level="2" data-basepath=".." data-revision="1436507840093">
     
 
 <div class="book-summary">
@@ -49,10 +51,10 @@
         
     
         
-        <li class="chapter active" data-level="0" data-path="index.html">
+        <li class="chapter " data-level="0" data-path="index.html">
             
                 
-                    <a href="./index.html">
+                    <a href="../index.html">
                         <i class="fa fa-check"></i>
                         
                          Introduction
@@ -66,7 +68,7 @@
         <li class="chapter " data-level="1" data-path="chapter1.html">
             
                 
-                    <a href="./chapter1.html">
+                    <a href="../chapter1.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
@@ -79,10 +81,10 @@
         </li>
     
         
-        <li class="chapter " data-level="2" data-path="module/README.html">
+        <li class="chapter active" data-level="2" data-path="module/README.html">
             
                 
-                    <a href="./module/README.html">
+                    <a href="../module/README.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.</b>
@@ -99,7 +101,7 @@
         <li class="chapter " data-level="2.1" data-path="module/module_life_cycle.html">
             
                 
-                    <a href="./module/module_life_cycle.html">
+                    <a href="../module/module_life_cycle.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
@@ -115,7 +117,7 @@
         <li class="chapter " data-level="2.2" data-path="module/module_methods.html">
             
                 
-                    <a href="./module/module_methods.html">
+                    <a href="../module/module_methods.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.2.</b>
@@ -131,7 +133,7 @@
         <li class="chapter " data-level="2.3" data-path="module/view.html">
             
                 
-                    <a href="./module/view.html">
+                    <a href="../module/view.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.3.</b>
@@ -229,7 +231,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="./" >SPAMJS</a>
+        <a href="../" >SPAMJS</a>
     </h1>
 </div>
 
@@ -237,10 +239,51 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_4">
+                    <section class="normal" id="section-gitbook_6">
                     
-                        <h1 id="spamjs">SPAMJS</h1>
-<p>Single Page Application Module JavaScript Framwork.</p>
+                        <h1 id="module">Module</h1>
+<p>Module is an independant entity existing in your project with its own dependency declared in module itself.</p>
+<p>To define a module we will follow foo.js specification</p>
+<pre><code class="lang-javascript">_define_(<span class="hljs-string">"myproject.app"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
+
+    app.say_hello = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Another Hello World!"</span>);
+    };
+
+});
+</code></pre>
+<p>To get any module we use _module_ function</p>
+<pre><code class="lang-javascript">_define_(<span class="hljs-string">"myproject.app"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
+
+    <span class="hljs-keyword">var</span> date_util = _module_(<span class="hljs-string">"utils.date"</span>)
+
+    app.say_hello = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello World! at time "</span>+ date_util.get_time());
+    };
+
+});
+</code></pre>
+<p>To extend from parent module</p>
+<pre><code class="lang-javascript">
+_define_(<span class="hljs-string">"parent.app"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
+
+    app.say_hello = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I m parent Module"</span>);
+    };
+
+});
+
+_define_(<span class="hljs-string">"myproject.app"</span>,<span class="hljs-string">"parent.app"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
+
+    <span class="hljs-keyword">var</span> date_util = _module_(<span class="hljs-string">"utils.date"</span>)
+
+    app.say_hello = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Say hello to my parent app"</span>);
+        <span class="hljs-keyword">this</span>.parent().say_hello();
+    };
+
+});
+</code></pre>
 
                     
                     </section>
@@ -251,21 +294,23 @@
         </div>
 
         
+        <a href="../chapter1.html" class="navigation navigation-prev " aria-label="Previous page: Scalable Application"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./chapter1.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Scalable Application"><i class="fa fa-angle-right"></i></a>
+        
+        <a href="../module/module_life_cycle.html" class="navigation navigation-next " aria-label="Next page: Module Life Cycle"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
-<script src="gitbook/app.js"></script>
+<script src="../gitbook/app.js"></script>
 
     
     <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
     
-    <script src="gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
     
 
 <script>

@@ -1,0 +1,14 @@
+{
+	"name" : "spamjs/book",
+	"type" : "library",
+	"description" : "SPAMJS framework docs",
+	"keywords" : [
+		"spamjs",
+		"API"
+	],
+	"license" : "MIT",
+	"require" : {
+		"jqgeeks/utils" : ">=1.2.6",
+		"webmodules/rivets" : ">=0.7.1"
+	}
+}
