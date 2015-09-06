@@ -2,10 +2,29 @@
 
 Module is an independant entity existing in your project with its own dependency declared in module itself.
 
-To define a module we will follow foo.js specification
+To define a module we can follow prototype based pattern
+
 
 ```javascript
-_define_("myproject.app",function(app){
+define({
+    name : "myproject.app"
+}).as(function(app){
+
+    return {
+        say_hello : function(){
+            console.log("Another Hello World!");
+        }
+    };
+
+});
+```
+
+Or alternatilvely we can use namespace based pattern, usually used for static/global modules where you dont want to create instances for example global services/utilities
+
+```javascript
+define({
+    name : "myproject.app"
+}).as(function(app){
 
     app.say_hello = function(){
         console.log("Another Hello World!");
@@ -13,44 +32,6 @@ _define_("myproject.app",function(app){
 
 });
 ```
-
-To get any module we use \_module\_ function
-
-```javascript
-_define_("myproject.app",function(app){
-
-    var date_util = _module_("utils.date")
-
-    app.say_hello = function(){
-        console.log("Hello World! at time "+ date_util.get_time());
-    };
-
-});
-```
-To extend from parent module
-
-```javascript
-
-_define_("parent.app",function(app){
-
-    app.say_hello = function(){
-        console.log("I m parent Module");
-    };
-
-});
-
-_define_("myproject.app","parent.app",function(app){
-
-    var date_util = _module_("utils.date")
-
-    app.say_hello = function(){
-        console.log("Say hello to my parent app");
-        this.parent().say_hello();
-    };
-
-});
-```
-
 
 
 

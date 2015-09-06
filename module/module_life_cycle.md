@@ -1,9 +1,11 @@
 # Module Life Cycle
 
-Each module has its own events which gets triggered during its life cycle.
+Each module has its own events which gets triggered during its life cycle. By convention all the events are to be name with _underscore_ pre-suf-fix
 
 ```javascript
-_define_("myproject.app",function(app,_app_){
+define({
+    name : "myproject.app"
+}).as(function(app){
 
     app._config_ = function(appConfig){
         console.log("App can be configured now");
@@ -23,7 +25,7 @@ _define_("myproject.app",function(app,_app_){
 
     app._instance_ = function(params){
         console.log("App instance is being created");
-        //Note 'this' here referes to instance bing created. So _instance_ can be seen as contructor function.
+        //Note 'this' here referes to instance being created. So _instance_ can be used as contructor function.
     };
 
 });
