@@ -10,7 +10,7 @@ Its each instance has its own life cycle and predefined methods.
 define({
     name : "sidebar",
     extend : "spamjs.view"
-}).as(function(mychatwindow,_mychatwindow_){
+}).as(function(sidebar){
 
     return {
         events : { //DOM events binder
