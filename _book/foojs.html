@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Scalable Application | SPAMJS</title>
+        <title>foo.js | SPAMJS</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="./module/README.html" />
+    <link rel="next" href="./definejs.html" />
     
     
-    <link rel="prev" href="./index.html" />
+    <link rel="prev" href="./libraries.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath="." data-revision="1436507840093">
+    <div class="book"  data-level="1.1" data-basepath="." data-revision="1447936699275">
     
 
 <div class="book-summary">
@@ -65,18 +65,56 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="chapter1.html">
+        <li class="chapter " data-level="1" data-path="libraries.html">
             
                 
-                    <a href="./chapter1.html">
+                    <a href="./libraries.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
                         
-                         Scalable Application
+                         Utilities
                     </a>
                 
             
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter active" data-level="1.1" data-path="foojs.html">
+            
+                
+                    <a href="./foojs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         foo.js
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2" data-path="definejs.html">
+            
+                
+                    <a href="./definejs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         define.js
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -130,15 +168,47 @@
         </li>
     
         
-        <li class="chapter " data-level="2.3" data-path="module/view.html">
+        <li class="chapter " data-level="2.3" data-path="module/files.html">
+            
+                
+                    <a href="./module/files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         Files
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.4" data-path="module/templates.html">
+            
+                
+                    <a href="./module/templates.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                         Templates
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.5" data-path="module/view.html">
             
                 
                     <a href="./module/view.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.3.</b>
+                            <b>2.5.</b>
                         
-                         View Module
+                         Views
                     </a>
                 
             
@@ -239,11 +309,46 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_5">
+                    <section class="normal" id="section-gitbook_6">
                     
-                        <h1 id="a-scalable-javascript-application-architecture">A Scalable JavaScript Application Architecture</h1>
-<p>Refer :
-<a href="https://www.youtube.com/watch?v=b5pFv9NB9fs" target="_blank">Creating A Scalable JavaScript Application Architecture Nicholas Zakas</a></p>
+                        <h1 id="foojs">foo.js</h1>
+<h2 id="istypeobj">is(type,obj)</h2>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Valid Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Array,Function,String,Object,Boolean,Number,Undefined,Null</td>
+</tr>
+<tr>
+<td>obj</td>
+<td>mixed</td>
+<td>ANY</td>
+</tr>
+</tbody>
+</table>
+<p>To check the type of javascript Object.</p>
+<pre><code class="lang-javascript">    <span class="hljs-built_in">window</span>.is(<span class="hljs-string">"Function"</span>, myObj);
+    <span class="hljs-comment">//will return true or false</span>
+    <span class="hljs-built_in">window</span>.is(<span class="hljs-string">"Array"</span>, myObj);
+    <span class="hljs-built_in">window</span>.is(<span class="hljs-string">"String"</span>, myObj);
+</code></pre>
+<h2 id="isarrayobj">is.Array(obj)</h2>
+<h2 id="isnumberobj">is.Number(obj)</h2>
+<h2 id="isfunctionobj">is.Function(obj)</h2>
+<h2 id="isnullobj">is.Null(obj)</h2>
+<h2 id="isundefinedobj">is.Undefined(obj)</h2>
+<h2 id="isvalueobj">is.Value(obj)</h2>
+<p> Returns TRUE if obj is neither <em>null</em> nor <em>undefined</em></p>
+<h2 id="isemptyobj">is.Empty(obj)</h2>
+<p> Returns TRUE if obj is <em>null</em>, <em>undefined</em>,<em>false</em>,<em>0</em>,EMPTY_ARRAY, EMPTY_OBJECT or EMPTY_STRING</p>
 
                     
                     </section>
@@ -254,10 +359,10 @@
         </div>
 
         
-        <a href="./index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="./libraries.html" class="navigation navigation-prev " aria-label="Previous page: Utilities"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./module/README.html" class="navigation navigation-next " aria-label="Next page: Module"><i class="fa fa-angle-right"></i></a>
+        <a href="./definejs.html" class="navigation navigation-next " aria-label="Next page: define.js"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

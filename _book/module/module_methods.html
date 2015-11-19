@@ -18,7 +18,7 @@
     
     
     
-    <link rel="next" href="../module/view.html" />
+    <link rel="next" href="../module/files.html" />
     
     
     <link rel="prev" href="../module/module_life_cycle.html" />
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.2" data-basepath=".." data-revision="1436507840093">
+    <div class="book"  data-level="2.2" data-basepath=".." data-revision="1447936699275">
     
 
 <div class="book-summary">
@@ -65,18 +65,56 @@
         </li>
     
         
-        <li class="chapter " data-level="1" data-path="chapter1.html">
+        <li class="chapter " data-level="1" data-path="libraries.html">
             
                 
-                    <a href="../chapter1.html">
+                    <a href="../libraries.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
                         
-                         Scalable Application
+                         Utilities
                     </a>
                 
             
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.1" data-path="foojs.html">
+            
+                
+                    <a href="../foojs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         foo.js
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2" data-path="definejs.html">
+            
+                
+                    <a href="../definejs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         define.js
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -130,15 +168,47 @@
         </li>
     
         
-        <li class="chapter " data-level="2.3" data-path="module/view.html">
+        <li class="chapter " data-level="2.3" data-path="module/files.html">
+            
+                
+                    <a href="../module/files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         Files
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.4" data-path="module/templates.html">
+            
+                
+                    <a href="../module/templates.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                         Templates
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.5" data-path="module/view.html">
             
                 
                     <a href="../module/view.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.3.</b>
+                            <b>2.5.</b>
                         
-                         View Module
+                         Views
                     </a>
                 
             
@@ -239,9 +309,9 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_8">
+                    <section class="normal" id="section-gitbook_10">
                     
-                        <h1 id="module-methods">Module Methods</h1>
+                        <h1 id="module-methods-and-attributes">Module Methods and Attributes</h1>
 <table>
 <thead>
 <tr>
@@ -260,43 +330,17 @@
 <thead>
 <tr>
 <th>Signature</th>
-<th>MODULE.getPath(path)</th>
+<th>MODULE.path( path )</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>returns</td>
-<td>actual url of path relative to current MODULE</td>
+<td>path (String)</td>
+<td>path of file, relative to module</td>
 </tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Signature</th>
-<th>MODULE.load(path,data)</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>returns</td>
-<td>Prmoise to content of response</td>
-</tr>
-<tr>
-<td>example 1</td>
-<td>MODULE.load(&quot;~my/path/file.json!json&quot;) <br/> actual request url will be relative to CONTEXT_PATH and data wil be served as json</td>
-</tr>
-<tr>
-<td>example 2</td>
-<td>MODULE.load(&quot;/my/path/to/api!json&quot;) <br/> actual request url will be relative to website and data wil be served as json</td>
-</tr>
-<tr>
-<td>example 3</td>
-<td>MODULE.load(&quot;/my/path/to/api!json&quot;,{qty :2}) <br/> actual request url will be relative to website and data wil be served as json</td>
-</tr>
-<tr>
-<td>example 4</td>
-<td>MODULE.load(&quot;my/path/to/api&quot;,{qty :2}) <br/> actual request url will be relative to current module and data wil be served as string</td>
+<td>absolute path to file</td>
 </tr>
 </tbody>
 </table>
@@ -314,6 +358,24 @@
 </tr>
 </tbody>
 </table>
+<table>
+<thead>
+<tr>
+<th>Signature</th>
+<th>MODULE.is(type)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type (String/Module)</td>
+<td>Module name or module itself</td>
+</tr>
+<tr>
+<td>returns</td>
+<td>TRUE of module extends the type</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
@@ -327,7 +389,7 @@
         <a href="../module/module_life_cycle.html" class="navigation navigation-prev " aria-label="Previous page: Module Life Cycle"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../module/view.html" class="navigation navigation-next " aria-label="Next page: View Module"><i class="fa fa-angle-right"></i></a>
+        <a href="../module/files.html" class="navigation navigation-next " aria-label="Next page: Files"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

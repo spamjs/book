@@ -4,9 +4,9 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Introduction | SPAMJS</title>
+        <title>define.js | SPAMJS</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Single Page Application Module JavaScript Framework.">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
         <meta name="HandheldFriendly" content="true"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -18,8 +18,10 @@
     
     
     
-    <link rel="next" href="./libraries.html" />
+    <link rel="next" href="./module/README.html" />
     
+    
+    <link rel="prev" href="./foojs.html" />
     
 
         
@@ -31,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="0" data-basepath="." data-revision="1447936699275">
+    <div class="book"  data-level="1.2" data-basepath="." data-revision="1447936699275">
     
 
 <div class="book-summary">
@@ -49,7 +51,7 @@
         
     
         
-        <li class="chapter active" data-level="0" data-path="index.html">
+        <li class="chapter " data-level="0" data-path="index.html">
             
                 
                     <a href="./index.html">
@@ -96,7 +98,7 @@
         </li>
     
         
-        <li class="chapter " data-level="1.2" data-path="definejs.html">
+        <li class="chapter active" data-level="1.2" data-path="definejs.html">
             
                 
                     <a href="./definejs.html">
@@ -307,15 +309,82 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_4">
+                    <section class="normal" id="section-gitbook_5">
                     
-                        <h1 id="spamjs">SPAMJS</h1>
-<p>Single Page Application Module JavaScript Framework.</p>
-<h1 id="a-scalable-javascript-application-architecture">A Scalable JavaScript Application Architecture</h1>
-<p>Refer :
-<a href="https://www.youtube.com/watch?v=b5pFv9NB9fs" target="_blank">Creating A Scalable JavaScript Application Architecture Nicholas Zakas</a></p>
-<p><a href="http://www.youtube.com/watch?v=b5pFv9NB9fs" target="_blank"><img src="http://img.youtube.com/vi/b5pFv9NB9fs/0.jpg" alt="Creating A Scalable JavaScript Application Architecture Nicholas"></a></p>
+                        <h1 id="definejs">define.js</h1>
+<p>To define any module we use define function.</p>
+<pre><code class="lang-javascript">
+define({
+    name : <span class="hljs-string">"MyFirstModule"</span>,
+    extend : <span class="hljs-string">"ParentModule"</span> <span class="hljs-comment">//Optional,</span>
+    using : [<span class="hljs-string">"Module1"</span>, <span class="hljs-string">"Module2"</span>, <span class="hljs-string">"Module3"</span>] <span class="hljs-comment">// Optional</span>
+}).as(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( MyFirstModule, Module1, Module2, Module3)</span></span>{
 
+
+    <span class="hljs-keyword">return</span> {
+        sayGoodMorning : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name)</span></span>{
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Good Morning, "</span> + name);
+        },
+        sayGoodNight : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Good Night, "</span> + name);
+        }
+    };
+
+});
+</code></pre>
+<p>To use module <strong>MyModuleName</strong></p>
+<pre><code class="lang-javascript">define({
+    name : <span class="hljs-string">"MySecondModule"</span>,
+    using : [<span class="hljs-string">"MyFirstModule"</span>,<span class="hljs-string">"TimeUtil"</span>]
+}).as(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( MySecondModule, MyFirstModule, TimeUtil)</span></span>{
+
+    <span class="hljs-keyword">return</span> {
+        saySomething : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name)</span></span>{
+            <span class="hljs-keyword">if</span>(TimeUtil.isMorning()){
+                <span class="hljs-keyword">return</span> MyFirstModule.sayGoodMorning(name);
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">return</span> MyFirstModule.sayGoodNight(name);
+            }
+        }
+    };
+
+});
+</code></pre>
+<p>Alternativly we could have done this also.</p>
+<pre><code class="lang-javascript">define({
+    name : <span class="hljs-string">"MyThirdModule"</span>,
+    using : [<span class="hljs-string">"TimeUtil"</span>]
+}).as(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( MyThirdModule, TimeUtil)</span></span>{
+
+    <span class="hljs-keyword">var</span> MyFirstModule = <span class="hljs-built_in">module</span>(<span class="hljs-string">"MyFirstModule"</span>);
+
+    <span class="hljs-keyword">return</span> {
+        greet : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name)</span></span>{
+            <span class="hljs-keyword">if</span>(TimeUtil.isMorning()){
+                <span class="hljs-keyword">return</span> MyFirstModule.sayGoodMorning(name);
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">return</span> MyFirstModule.sayGoodNight(name);
+            }
+        }
+    };
+
+});
+</code></pre>
+<p>This one is usefule when we are resolving module name at run-time. <em>module</em> function also accepts second argument optionally, as callback.</p>
+<pre><code class="lang-javascript">
+    <span class="hljs-built_in">module</span>(<span class="hljs-string">"MyFirstModule"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(MyFirstModule)</span></span>{
+        MyFirstModule.sayGoodMorning(name);
+    });
+</code></pre>
+<p>As we can see this is asyncronous, useful incase all modulesare not loaded initally and being loaded on asynchronously-on-demand also known as lazy-loading.</p>
+<p>Usually modules are for global use, but we can create instance of any module, which internally follows prototype chanining.</p>
+<pre><code class="lang-javascript">
+    <span class="hljs-keyword">var</span> MyFirstModule = <span class="hljs-built_in">module</span>(<span class="hljs-string">"MyFirstModule"</span>);
+    <span class="hljs-keyword">var</span> myFirstInstance = MyFirstModule.instance();
+</code></pre>
+<p>Prototype chaning for this example would be like as</p>
+<pre><code>    myFirstInstance --&gt; MyFirstModule --&gt; ParentModule
+</code></pre>
                     
                     </section>
                 
@@ -325,8 +394,10 @@
         </div>
 
         
+        <a href="./foojs.html" class="navigation navigation-prev " aria-label="Previous page: foo.js"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./libraries.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Utilities"><i class="fa fa-angle-right"></i></a>
+        
+        <a href="./module/README.html" class="navigation navigation-next " aria-label="Next page: Module"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

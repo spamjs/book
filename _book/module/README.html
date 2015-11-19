@@ -21,7 +21,7 @@
     <link rel="next" href="../module/module_life_cycle.html" />
     
     
-    <link rel="prev" href="../chapter1.html" />
+    <link rel="prev" href="../definejs.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2" data-basepath=".." data-revision="1436507840093">
+    <div class="book"  data-level="2" data-basepath=".." data-revision="1447936699275">
     
 
 <div class="book-summary">
@@ -65,18 +65,56 @@
         </li>
     
         
-        <li class="chapter " data-level="1" data-path="chapter1.html">
+        <li class="chapter " data-level="1" data-path="libraries.html">
             
                 
-                    <a href="../chapter1.html">
+                    <a href="../libraries.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
                         
-                         Scalable Application
+                         Utilities
                     </a>
                 
             
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.1" data-path="foojs.html">
+            
+                
+                    <a href="../foojs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         foo.js
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2" data-path="definejs.html">
+            
+                
+                    <a href="../definejs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         define.js
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -130,15 +168,47 @@
         </li>
     
         
-        <li class="chapter " data-level="2.3" data-path="module/view.html">
+        <li class="chapter " data-level="2.3" data-path="module/files.html">
+            
+                
+                    <a href="../module/files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         Files
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.4" data-path="module/templates.html">
+            
+                
+                    <a href="../module/templates.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                         Templates
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.5" data-path="module/view.html">
             
                 
                     <a href="../module/view.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.3.</b>
+                            <b>2.5.</b>
                         
-                         View Module
+                         Views
                     </a>
                 
             
@@ -239,47 +309,30 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_6">
+                    <section class="normal" id="section-gitbook_8">
                     
                         <h1 id="module">Module</h1>
 <p>Module is an independant entity existing in your project with its own dependency declared in module itself.</p>
-<p>To define a module we will follow foo.js specification</p>
-<pre><code class="lang-javascript">_define_(<span class="hljs-string">"myproject.app"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
+<p>To define a module we can follow prototype based pattern</p>
+<pre><code class="lang-javascript">define({
+    name : <span class="hljs-string">"myproject.app"</span>
+}).as(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
+
+    <span class="hljs-keyword">return</span> {
+        say_hello : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Another Hello World!"</span>);
+        }
+    };
+
+});
+</code></pre>
+<p>Or alternatilvely we can use namespace based pattern, usually used for static/global modules where you dont want to create instances for example global services/utilities</p>
+<pre><code class="lang-javascript">define({
+    name : <span class="hljs-string">"myproject.app"</span>
+}).as(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
 
     app.say_hello = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Another Hello World!"</span>);
-    };
-
-});
-</code></pre>
-<p>To get any module we use _module_ function</p>
-<pre><code class="lang-javascript">_define_(<span class="hljs-string">"myproject.app"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
-
-    <span class="hljs-keyword">var</span> date_util = _module_(<span class="hljs-string">"utils.date"</span>)
-
-    app.say_hello = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello World! at time "</span>+ date_util.get_time());
-    };
-
-});
-</code></pre>
-<p>To extend from parent module</p>
-<pre><code class="lang-javascript">
-_define_(<span class="hljs-string">"parent.app"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
-
-    app.say_hello = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I m parent Module"</span>);
-    };
-
-});
-
-_define_(<span class="hljs-string">"myproject.app"</span>,<span class="hljs-string">"parent.app"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
-
-    <span class="hljs-keyword">var</span> date_util = _module_(<span class="hljs-string">"utils.date"</span>)
-
-    app.say_hello = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Say hello to my parent app"</span>);
-        <span class="hljs-keyword">this</span>.parent().say_hello();
     };
 
 });
@@ -294,7 +347,7 @@ _define_(<span class="hljs-string">"myproject.app"</span>,<span class="hljs-stri
         </div>
 
         
-        <a href="../chapter1.html" class="navigation navigation-prev " aria-label="Previous page: Scalable Application"><i class="fa fa-angle-left"></i></a>
+        <a href="../definejs.html" class="navigation navigation-prev " aria-label="Previous page: define.js"><i class="fa fa-angle-left"></i></a>
         
         
         <a href="../module/module_life_cycle.html" class="navigation navigation-next " aria-label="Next page: Module Life Cycle"><i class="fa fa-angle-right"></i></a>

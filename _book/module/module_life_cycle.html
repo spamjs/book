@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1436507840093">
+    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1447936699275">
     
 
 <div class="book-summary">
@@ -65,18 +65,56 @@
         </li>
     
         
-        <li class="chapter " data-level="1" data-path="chapter1.html">
+        <li class="chapter " data-level="1" data-path="libraries.html">
             
                 
-                    <a href="../chapter1.html">
+                    <a href="../libraries.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
                         
-                         Scalable Application
+                         Utilities
                     </a>
                 
             
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.1" data-path="foojs.html">
+            
+                
+                    <a href="../foojs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         foo.js
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2" data-path="definejs.html">
+            
+                
+                    <a href="../definejs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         define.js
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -130,15 +168,47 @@
         </li>
     
         
-        <li class="chapter " data-level="2.3" data-path="module/view.html">
+        <li class="chapter " data-level="2.3" data-path="module/files.html">
+            
+                
+                    <a href="../module/files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         Files
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.4" data-path="module/templates.html">
+            
+                
+                    <a href="../module/templates.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                         Templates
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.5" data-path="module/view.html">
             
                 
                     <a href="../module/view.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>2.3.</b>
+                            <b>2.5.</b>
                         
-                         View Module
+                         Views
                     </a>
                 
             
@@ -239,11 +309,13 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_7">
+                    <section class="normal" id="section-gitbook_11">
                     
                         <h1 id="module-life-cycle">Module Life Cycle</h1>
-<p>Each module has its own events which gets triggered during its life cycle.</p>
-<pre><code class="lang-javascript">_define_(<span class="hljs-string">"myproject.app"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app,_app_)</span></span>{
+<p>Each module has its own events which gets triggered during its life cycle. By convention all the events are to be name with <em>underscore</em> pre-suf-fix</p>
+<pre><code class="lang-javascript">define({
+    name : <span class="hljs-string">"myproject.app"</span>
+}).as(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
 
     app._config_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(appConfig)</span></span>{
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App can be configured now"</span>);
@@ -263,7 +335,7 @@
 
     app._instance_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params)</span></span>{
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App instance is being created"</span>);
-        <span class="hljs-comment">//Note 'this' here referes to instance bing created. So _instance_ can be seen as contructor function.</span>
+        <span class="hljs-comment">//Note 'this' here referes to instance being created. So _instance_ can be used as contructor function.</span>
     };
 
 });
