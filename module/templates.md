@@ -1,5 +1,7 @@
 # Templates
 
+###### package#module - jsutils/file#jsutils.file
+
 Using jsutils.files alos gives you additional apis, which are actually more useful.
 
 

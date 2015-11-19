@@ -1,5 +1,6 @@
 # Files
 
+###### package#module - jsutils/file#jsutils.file
 
 ## jsutils.file.getJSON
 load JSON file from server and applies _dummyJSON_ if data is passed.

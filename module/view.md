@@ -1,7 +1,8 @@
 # View Module
 
+###### package#module - spamjs/view#spamjs.view
 
-A module having its own independant DOM presence referred as **View**
+A module having its own independant DOM presence is referred as **View**
 
 Its each instance has its own life cycle and predefined methods.
 
@@ -23,6 +24,18 @@ define({
         },
         _remove_ : function(){//When View is removed from DOM tree
             console.log("View is being removed from DOM");
+        },
+        function_name1 : function(e,target,data){
+            //mybutton been clicked
+            //e - event
+            // target - target element which got clicked
+            //data - dataset for target element
+        },
+        function_name3 : function(e,target,data){
+            //my2button been clicked
+            //e - event
+            // target - target element which got clicked
+            //data - dataset for target element
         }
     };
 
@@ -64,6 +77,7 @@ removes child module from memory and DOM
 ```javascript
 self.remove("module_id");
 ```
+Note:- if no arguments is passed modules itself get removed
 
 ####self.model
 Set/gets 2Way model linked with Current View module instance.
