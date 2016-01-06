@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="3" data-basepath=".." data-revision="1452076310378">
+    <div class="book"  data-level="3" data-basepath=".." data-revision="1452077008861">
     
 
 <div class="book-summary">
@@ -347,28 +347,29 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_1274">
+                    <section class="normal" id="section-gitbook_1302">
                     
                         <h1 id="boot-server">Boot Server</h1>
 <h5 id="in-gruntfilejs">in GruntFile.js</h5>
-<pre><code>    //Server Config is part of boot config
+<pre><code class="lang-javascript">    <span class="hljs-comment">//Server Config is part of boot config</span>
     bootloader: {
       options: {
-        indexBundles: [&quot;webmodules/bootloader&quot;],
-        src: &quot;./&quot;,
-        dest: &quot;build/dist&quot;,
-        resourcesFile: &quot;resources/resource.json&quot;,
-        livereloadUrl: &quot;http://localhost:8081/livereload.js&quot;,
+        indexBundles: [<span class="hljs-string">"webmodules/bootloader"</span>],
+        src: <span class="hljs-string">"./"</span>,
+        dest: <span class="hljs-string">"build/dist"</span>,
+        resourcesFile: <span class="hljs-string">"resources/resource.json"</span>,
+        livereloadUrl: <span class="hljs-string">"http://localhost:8081/livereload.js"</span>,
         bootServer: {
-          port: 8087
+          port: <span class="hljs-number">8087</span>
         }
       }
     }
-    //load tasks
-    grunt.loadNpmTasks(&#39;grunt-bootloader&#39;);
-    //Set alias for server start
-    grunt.registerTask(&#39;start-server&#39;, [&#39;bootloader:server&#39;]);
-</code></pre><h4 id="to-start-server">To start server</h4>
+    <span class="hljs-comment">//load tasks</span>
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-bootloader'</span>);
+    <span class="hljs-comment">//Set alias for server start</span>
+    grunt.registerTask(<span class="hljs-string">'start-server'</span>, [<span class="hljs-string">'bootloader:server'</span>]);
+</code></pre>
+<h4 id="to-start-server">To start server</h4>
 <pre><code>grunt start-server
 </code></pre>
                     
