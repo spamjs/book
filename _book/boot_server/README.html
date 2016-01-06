@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Module Life Cycle | SPAMJS</title>
+        <title>Boot Server | SPAMJS</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../module/module_methods.html" />
+    <link rel="next" href="../boot_server/controller.html" />
     
     
-    <link rel="prev" href="../module/README.html" />
+    <link rel="prev" href="../module/view.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1452076310378">
+    <div class="book"  data-level="3" data-basepath=".." data-revision="1452076310378">
     
 
 <div class="book-summary">
@@ -136,7 +136,7 @@
                 
     
         
-        <li class="chapter active" data-level="2.1" data-path="module/module_life_cycle.html">
+        <li class="chapter " data-level="2.1" data-path="module/module_life_cycle.html">
             
                 
                     <a href="../module/module_life_cycle.html">
@@ -221,7 +221,7 @@
         </li>
     
         
-        <li class="chapter " data-level="3" data-path="boot_server/README.html">
+        <li class="chapter active" data-level="3" data-path="boot_server/README.html">
             
                 
                     <a href="../boot_server/README.html">
@@ -347,38 +347,30 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_1281">
+                    <section class="normal" id="section-gitbook_1274">
                     
-                        <h1 id="module-life-cycle">Module Life Cycle</h1>
-<p>Each module has its own events which gets triggered during its life cycle. By convention all the events are to be name with <em>underscore</em> pre-suf-fix</p>
-<pre><code class="lang-javascript">define({
-    name : <span class="hljs-string">"myproject.app"</span>
-}).as(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
-
-    app._config_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(appConfig)</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App can be configured now"</span>);
-    };
-
-    app._define_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App has been defined"</span>);
-    };
-
-    app._ready_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Document is ready for DOM operations"</span>);
-    };
-
-    app._extended_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(childModule,childProto)</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App is being extend by "</span>+childModule.module);
-    };
-
-    app._instance_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params)</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App instance is being created"</span>);
-        <span class="hljs-comment">//Note 'this' here referes to instance being created. So _instance_ can be used as contructor function.</span>
-    };
-
-});
+                        <h1 id="boot-server">Boot Server</h1>
+<h5 id="in-gruntfilejs">in GruntFile.js</h5>
+<pre><code>    //Server Config is part of boot config
+    bootloader: {
+      options: {
+        indexBundles: [&quot;webmodules/bootloader&quot;],
+        src: &quot;./&quot;,
+        dest: &quot;build/dist&quot;,
+        resourcesFile: &quot;resources/resource.json&quot;,
+        livereloadUrl: &quot;http://localhost:8081/livereload.js&quot;,
+        bootServer: {
+          port: 8087
+        }
+      }
+    }
+    //load tasks
+    grunt.loadNpmTasks(&#39;grunt-bootloader&#39;);
+    //Set alias for server start
+    grunt.registerTask(&#39;start-server&#39;, [&#39;bootloader:server&#39;]);
+</code></pre><h4 id="to-start-server">To start server</h4>
+<pre><code>grunt start-server
 </code></pre>
-
                     
                     </section>
                 
@@ -388,10 +380,10 @@
         </div>
 
         
-        <a href="../module/README.html" class="navigation navigation-prev " aria-label="Previous page: Module"><i class="fa fa-angle-left"></i></a>
+        <a href="../module/view.html" class="navigation navigation-prev " aria-label="Previous page: Views"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../module/module_methods.html" class="navigation navigation-next " aria-label="Next page: Module Methods"><i class="fa fa-angle-right"></i></a>
+        <a href="../boot_server/controller.html" class="navigation navigation-next " aria-label="Next page: Controller"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

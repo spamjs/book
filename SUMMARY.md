@@ -10,4 +10,6 @@
    * [Files](module/files.md)
    * [Templates](module/templates.md)
    * [Views](module/view.md)
+* [Boot Server](boot_server/README.md)
+   * [Controller](boot_server/controller.md)
 

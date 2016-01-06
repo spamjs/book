@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Module Life Cycle | SPAMJS</title>
+        <title>Controller | SPAMJS</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,8 @@
     
     
     
-    <link rel="next" href="../module/module_methods.html" />
     
-    
-    <link rel="prev" href="../module/README.html" />
+    <link rel="prev" href="../boot_server/README.html" />
     
 
         
@@ -33,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1452076310378">
+    <div class="book"  data-level="3.1" data-basepath=".." data-revision="1452076310378">
     
 
 <div class="book-summary">
@@ -136,7 +134,7 @@
                 
     
         
-        <li class="chapter active" data-level="2.1" data-path="module/module_life_cycle.html">
+        <li class="chapter " data-level="2.1" data-path="module/module_life_cycle.html">
             
                 
                     <a href="../module/module_life_cycle.html">
@@ -238,7 +236,7 @@
                 
     
         
-        <li class="chapter " data-level="3.1" data-path="boot_server/controller.html">
+        <li class="chapter active" data-level="3.1" data-path="boot_server/controller.html">
             
                 
                     <a href="../boot_server/controller.html">
@@ -347,37 +345,62 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_1281">
+                    <section class="normal" id="section-gitbook_1275">
                     
-                        <h1 id="module-life-cycle">Module Life Cycle</h1>
-<p>Each module has its own events which gets triggered during its life cycle. By convention all the events are to be name with <em>underscore</em> pre-suf-fix</p>
-<pre><code class="lang-javascript">define({
-    name : <span class="hljs-string">"myproject.app"</span>
-}).as(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(app)</span></span>{
+                        <h1 id="controller">Controller</h1>
+<p>Controller are modules kept in <strong><em>app/controller</em></strong> folder</p>
+<h5 id="appcontrollermaincontrollerjs">app/controller/MainController.js</h5>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(router)</span></span>{
 
-    app._config_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(appConfig)</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App can be configured now"</span>);
-    };
+  router.on({
+    <span class="hljs-string">"url"</span> : <span class="hljs-string">"/createseassion/{fname}/{lname}"</span>
+  },<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(lname,fname)</span></span>{
+    <span class="hljs-keyword">this</span>.user.role = <span class="hljs-string">"USER"</span>;
+    <span class="hljs-keyword">this</span>.user.set(<span class="hljs-string">"fname"</span>,fname);
+    <span class="hljs-keyword">this</span>.user.set(<span class="hljs-string">"lname"</span>,lname);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.view(<span class="hljs-string">"test.html"</span>,{ fname : fname,lname : lname});
+  });
 
-    app._define_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App has been defined"</span>);
-    };
+  router.on({
+    <span class="hljs-string">"url"</span> : <span class="hljs-string">"/json/public/{fname}/{lname}"</span>
+  },<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(lname,fname)</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.json(<span class="hljs-string">"test.json"</span>,{
+        fname :  <span class="hljs-keyword">this</span>.user.get(<span class="hljs-string">"fname"</span>),
+        lname : <span class="hljs-keyword">this</span>.user.get(<span class="hljs-string">"lname"</span>)
+    });
+  });
 
-    app._ready_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Document is ready for DOM operations"</span>);
-    };
+  router.on({
+    <span class="hljs-string">"url"</span> : <span class="hljs-string">"/json/authorised/{fname}/{lname}"</span>,
+    <span class="hljs-string">"roles"</span> : [<span class="hljs-string">"USER"</span>]
+  },<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(lname,fname)</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.json({
+        fname :  <span class="hljs-keyword">this</span>.user.get(<span class="hljs-string">"fname"</span>),
+        lname : <span class="hljs-keyword">this</span>.user.get(<span class="hljs-string">"lname"</span>)
+    });
+  });
 
-    app._extended_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(childModule,childProto)</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App is being extend by "</span>+childModule.module);
-    };
-
-    app._instance_ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params)</span></span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"App instance is being created"</span>);
-        <span class="hljs-comment">//Note 'this' here referes to instance being created. So _instance_ can be used as contructor function.</span>
-    };
-
-});
+};
 </code></pre>
+<h3 id="properties-aviable-in-controller-methods">Properties Aviable in Controller Methods</h3>
+<ul>
+<li><strong>this.user</strong> - session user for request<ul>
+<li>this.user.set(&quot;key&quot;,&quot;value&quot;);</li>
+<li>this.user.get(&quot;key&quot;);</li>
+<li>this.user.role - <em>role for user</em></li>
+</ul>
+</li>
+<li><strong>this.session</strong> - current session<ul>
+<li>this.sesssion.set(&quot;key&quot;,&quot;value&quot;);</li>
+<li>this.session.get(&quot;key&quot;);</li>
+</ul>
+</li>
+<li><strong>this.cookies</strong> - browser cookies manager<ul>
+<li>this.cookies.set(&quot;key&quot;,&quot;value&quot;);</li>
+<li>this.cookies.get(&quot;key&quot;);</li>
+</ul>
+</li>
+</ul>
 
                     
                     </section>
@@ -388,10 +411,8 @@
         </div>
 
         
-        <a href="../module/README.html" class="navigation navigation-prev " aria-label="Previous page: Module"><i class="fa fa-angle-left"></i></a>
+        <a href="../boot_server/README.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Boot Server"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../module/module_methods.html" class="navigation navigation-next " aria-label="Next page: Module Methods"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
