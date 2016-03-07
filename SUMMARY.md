@@ -1,6 +1,8 @@
 # Summary
 
 * [Introduction](README.md)
+   * [Project Structure](project_structure.md)
+   * [Package Structure](package_structure.md)
 * [Utilities](libraries.md)
    * [foo.js](foojs.md)
    * [define.js](definejs.md)
