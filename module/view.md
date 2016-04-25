@@ -60,7 +60,10 @@ adds child module to current module
 var CHILD_MODULE = module("child.module");
 
 self.add(CHILD_MODULE.instance({
-    id : "myID"
+    id : "myID",
+    options : {
+         key : "VALUE"
+    }
 }));
 
 ```
@@ -90,6 +93,40 @@ var score  = self.model().score;
 self.model().score = 40;
 
 ```
+
+
+###Events
+
+####\_init\_
+```javascript
+
+        _init_ : function(appConfig){
+            //When View is Attached to DOM tree
+            console.log("View is Intialized");
+            this.$$.html("<div>Hello</div>");
+
+            //Or set html from file
+            var absoluteTemplatePath = this.path("relative/path/to/template.html")
+            this.$$.loadTemplate(absoluteTemplatePath)
+            //or in single statment
+            this.$$.loadTemplate(this.path("relative/path/to/template.html"))
+
+            //Or to pass data to template
+            this.$$.loadTemplate(
+                this.path("relative/path/to/template.html"),
+                { fname : "lalit", lname : "Tanwar"}
+            );
+
+            //Alternativley instead of data a promise can be provided
+            // In this case template will be rendered after data is fetched from server
+            this.$$.loadTemplate(
+                this.path("relative/path/to/template.html"),
+                jQuery.get("/data/getUserDetails")
+            );
+
+
+        }```
+
 
 
 
