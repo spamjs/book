@@ -20,6 +20,8 @@
     //Set alias for server start
     grunt.registerTask('start-server', ['bootloader:server']);
 ```
+[To see options in details](https://github.com/nodeutilz/grunt-bootloader)
+
 #### To start server
 ```
 grunt start-server
