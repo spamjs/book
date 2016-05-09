@@ -1,20 +1,42 @@
-# Module Methods and Attributes
+# Module
 
+Each module has its own events which gets triggered during its life cycle. By convention all the events are to be name with _underscore_ pre-suf-fix
 
-|Signature| MODULE.parent() |
-| -- |
-| returns | parent  Module it is extended from|
+```javascript
+define({
+    name : "myproject.app"
+}).as(function(app){
 
-|Signature| MODULE.path( path ) |
-| -- |
-| path (String) | path of file, relative to module |
-| returns | absolute path to file |
+    return {
+        _instance_ : function(params){
+            console.log("myproject.app instance is being created");
+            //Note 'this' here referes to instance being created. So _instance_ can be used as contructor function.
+        },
+        _define_ = function(){
+            console.log("myproject.app has been defined");
+        },
+        _ready_ = function(){
+            console.log("Document is ready for DOM operations");
+        }
+    };
+});
+```
+##Module Life Cycle Events
+####\_instance_()
 
-|Signature| MODULE.instance() |
-| -- |
-| returns | Creates new instance of that Module |
+####\_define_()
+####\_ready_()
 
-|Signature| MODULE.is(type) |
-| -- |
-| type (String/Module) |Module name or module itself |
-| returns | TRUE of module extends the type |
+##Module In-built Functions
+####instance.parent()
+return - parent Module it is extended from
+
+####MODULE.path(path)
+return - absolute path to file
+
+####MODULE.instance()
+return - new instance of that Module
+
+####MODULE.is(type)
+returns | TRUE of module extends the type
+

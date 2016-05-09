@@ -1,41 +1,55 @@
 # define.js
 To define any module we use define function.
 
+
+##Define Module
+#####MyFirstModule.js
 ```javascript
-
 define({
-    name : "MyFirstModule",
-    extend : "ParentModule" //Optional,
-    using : ["Module1", "Module2", "Module3"] // Optional
-}).as(function( MyFirstModule, Module1, Module2, Module3){
-
+    name : "MyFirstModule"
+}).as(function( MyFirstModule){
 
     return {
         sayGoodMorning : function(name){
             console.log("Good Morning, " + name);
         },
-        sayGoodNight : function(){
+        sayGoodNight : function(name){
             console.log("Good Night, " + name);
         }
     };
 
 });
 ```
+Using *MyFirstModule*
 
-To use module **MyModuleName**
+```javascript
+module("MyFirstModule", function(MyFirstModule){
+    MyFirstModule.sayGoodMorning("Lalit");
+});
+
+//Or we can also create instance of MyFirstModule, which follows prototype-chain
+
+module("MyFirstModule", function(MyFirstModule){
+    var myMod = MyFirstModule.instance();
+    myMod.sayGoodMorning("Lalit");
+});
+```
+
+##Inheritence
+To extend module from another module
 
 ```javascript
 define({
     name : "MySecondModule",
-    using : ["MyFirstModule","TimeUtil"]
-}).as(function( MySecondModule, MyFirstModule, TimeUtil){
+    extend : ["MyFirstModule"]
+}).as(function( MySecondModule){
 
     return {
-        saySomething : function(name){
-            if(TimeUtil.isMorning()){
-                return MyFirstModule.sayGoodMorning(name);
+        saySomething : function(isMorning,name){
+            if(isMorning){
+                return this.parent().sayGoodMorning.call(this,name);
             } else {
-                return MyFirstModule.sayGoodNight(name);
+                return this.parent().sayGoodNight.call(this,name);
             }
         }
     };
@@ -44,59 +58,22 @@ define({
 
 ```
 
-Alternativly we could have done this also.
+##Module depenedncy
 
 ```javascript
 define({
     name : "MyThirdModule",
-    using : ["TimeUtil"]
-}).as(function( MyThirdModule, TimeUtil){
-
-    var MyFirstModule = module("MyFirstModule");
+    using : ["MySecondModule","TimeUtil"]
+}).as(function( MyThirdModule, MySecondModule, TimeUtil){
 
     return {
         greet : function(name){
-            if(TimeUtil.isMorning()){
-                return MyFirstModule.sayGoodMorning(name);
-            } else {
-                return MyFirstModule.sayGoodNight(name);
-            }
+            return MySecondModule.saySomething(name,TimeUtil.isMoring())
         }
     };
 
 });
-```
-
-This one is usefule when we are resolving module name at run-time. _module_ function also accepts second argument optionally, as callback.
-
-```javascript
-
-    module("MyFirstModule", function(MyFirstModule){
-        MyFirstModule.sayGoodMorning(name);
-    });
-
 
 ```
-
-As we can see this is asyncronous, useful incase all modulesare not loaded initally and being loaded on asynchronously-on-demand also known as lazy-loading.
-
-Usually modules are for global use, but we can create instance of any module, which internally follows prototype chanining.
-
-```javascript
-
-    var MyFirstModule = module("MyFirstModule");
-    var myFirstInstance = MyFirstModule.instance();
-
-```
-Prototype chaning for this example would be like as
-
-```
-    myFirstInstance --> MyFirstModule --> ParentModule
-```
-
-
-
-
-
 
 
