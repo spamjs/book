@@ -1,7 +1,9 @@
 # Boot Server
 
 #####in GruntFile.js
+
 ```javascript
+
     //Server Config is part of boot config
     bootloader: {
       options: {

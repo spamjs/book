@@ -34,7 +34,7 @@
 
 
 ##grunt options
-```
+```javascript
     ...
 
     bootloader: {
