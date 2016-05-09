@@ -33,7 +33,7 @@
  - spamjs-bootconfig
 
 
-##grunt options
+##GruntFile.js options
 ```javascript
     ...
 
@@ -73,7 +73,7 @@
 <script src="http://my-static-content.com/dist/bootloader_bundled/webmodules.bootloader.js">
     bootloader({
         debug : false,
-        indexBundle : "singleSignOn/app",
+        indexBundle : "myproject/app",
         version: "2"
     });
 </script>
