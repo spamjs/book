@@ -40,7 +40,7 @@ jsonpath.load(map2,"OK");
 // "OK"
 ```
 
-##Global Fucntions
+##Global Functions
 ###window.debounce(func, delay)
 it limits the rate at which a function can fire. A quick example:  you have a resize listener on the window which does some element dimension calculations and (possibly)  repositions a few elements.
 [Source](https://davidwalsh.name/javascript-debounce-function)
