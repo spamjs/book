@@ -7,6 +7,7 @@
    * [foo.js](foojs.md)
    * [Templates](module/templates.md)
    * [Files](module/files.md)
+   * [lazy.js](lazy.md)
 * [Module](module/README.md)
    * [define.js](definejs.md)
    * [Module Methods](module/module_methods.md)

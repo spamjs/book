@@ -49,7 +49,7 @@ it limits the rate at which a function can fire. A quick example:  you have a re
 Generates universal unique id
 
 ###window.until(callback,condition,delay)
-Executes a fucntion repeatedly till condition function returns true
+Executes a function repeatedly till condition function returns true
 
 
 
